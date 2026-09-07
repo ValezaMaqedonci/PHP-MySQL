@@ -39,4 +39,6 @@
    echo str_replace("not", "very", $programming)
 
 
+
+   echo "<br>"
 ?>
