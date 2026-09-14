@@ -75,4 +75,43 @@ switch ($day) {
         break;
 }
 
+echo "<br><br><br><br>";
+
+$nr = 1;
+
+while($nr <= 100){
+    echo "The number is : $nr <br>";
+    $nr++;
+}
+
+echo "<br><br>";
+
+$nr = 2;
+
+do{
+    echo "The number is : $nr <br>";
+    $nr++;
+}while($nr <= 56);
+
+echo "<br>";
+
+for($nr3 = 9; $nr3 <= 13; $nr3++){
+    echo "The number is : $nr3 <br>";
+}
+
+echo "<br>";
+
+$subjects = ["Maths", "English", "P.E", "Biology", "Science"];
+
+foreach($subjects as $value){
+    echo "$value <br>";
+}
+
+echo "<br>";
+  
+$age = array("John" => 18, "Michael" => 20, "Joe" => 13);
+ foreach($age as $key => $value){
+    echo "$key = $value  <br>";
+ }
+
 ?>
