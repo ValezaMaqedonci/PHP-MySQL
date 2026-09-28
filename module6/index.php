@@ -32,7 +32,9 @@ fwrite($my_file1, $text);
 $file2 = fopen("data.txt", "w+");
 fwrite($file2, "Welcome to Digital Scool!");
 
-
+//a+
+$file3 = fopen("data.txt", "w+");
+fwrite($file3, "/nSkz");
 
 
 
