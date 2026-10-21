@@ -7,10 +7,10 @@
 </head>
 <body>
     <form action="add.php" method="post">
-        <input type="text" name="username" placeholder="Username"><br>
-        <input type="text" name="password" placeholder="Password"><br>
+        <input type="text" name="name" placeholder="Username"><br>
+        <input type="text" name="username" placeholder="Password"><br>
         <input type="text" name="email" placeholder="email"><br>
-        <input type="submit" name="ADD"  value="ADD">
+        <input type="submit" name="submit"  value="ADD">
     </form>
 </body>
 </html>
