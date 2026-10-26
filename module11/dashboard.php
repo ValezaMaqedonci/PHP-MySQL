@@ -16,15 +16,14 @@
         }
 
         body,th,tr,td,table{
-            background-color: yellow;
             font-size: 30;
-            margin: 50px 250px 400px;
+
         }
 
         a{
+            color:black;
             text-decoration: none;
-            color: orange;
-            margin: 400px
+            margin: 30px
         }
     </style>
 <body>
@@ -54,6 +53,7 @@
                 <td><?=$user['name'] ?></td>
                 <td><?=$user['username'] ?></td>
                 <td><?=$user['email'] ?></td>
+                <td> <?= "<a href='delete.php?id=$user[id]'> Delete</a>| <a href='edit.php?id=$user[id]'> Update </a>" ?></td>
             </tr>
 
           <?php }
@@ -63,7 +63,8 @@
         </tbody>
     </table>
 
-   <a href="index1.php"><b>Add Users</a>
+   <br><br><a href="index1.php"><b>Add Users</a>
+
 
 </body>
 </html>
