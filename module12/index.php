@@ -16,32 +16,73 @@
                 <h2 class="text-center mb-4">Account Login</h2>
                 
                 <!-- Pointing to dashboard.php upon successful submission -->
-                <form action="dashboard.php" method="POST" class="needs-validation" novalidate>
+                
+<form action="add.php" method="POST" class="needs-validation" novalidate>
+
+    <div class="mb-3">
+        <label for="emailAddress" class="form-label">
+            Email Address
+        </label>
+
+        <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="emailAddress"
+            placeholder="name@example.com"
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">
+            Password
+        </label>
+
+        <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="password"
+            required
+        >
+    </div>
+
+    <button
+        type="submit"
+        name="submit"
+        class="btn btn-primary w-100">
+        Create Account
+    </button>
+
+</form>
+
                     
-                    <!-- Email Address -->
-                    <div class="mb-3">
+<!-- <form action="add.php" method="POST">
+                        <div class="mb-3">
                         <label for="emailAddress" class="form-label">Email Address</label>
                         <input type="email" name="email" class="form-control" id="emailAddress" placeholder="name@example.com" required>
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
 
-                    <!-- Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="password" required>
                         <div class="invalid-feedback">Please enter your password.</div>
                     </div>
 
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary w-100">Login to Dashboard</button>
+                  
+</form>                   
+
+  <button type="submit" name="submit" class="btn btn-primary w-100">Login to Dashboard</button>
                     
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-<!-- Validation Script -->
+<!-- Validation Script -->                      
 <script>
     (() => {
       'use strict'
@@ -58,6 +99,6 @@
     })()
 </script>
 
-<script src="https://jsdelivr.net"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </body>
 </html>
