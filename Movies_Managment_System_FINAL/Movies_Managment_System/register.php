@@ -1,50 +1,50 @@
+
 <?php
- /*
-  We will include config.php for connection with database.
-  We will get datas from index.php file, and inster them into database when Sign up button is clicked in index.php file.
-  If any of session is empty we will get a message
-  */
+require_once('config.php');
 
-	include_once('config.php');
+if (isset($_POST['submit'])) {
 
-	if(isset($_POST['submit']))
-	{
+    $emri = trim($_POST['emri']);
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $tempPass = $_POST['password'];
 
-		$emri = $_POST['emri'];
-		$username = $_POST['username'];
-		$email = $_POST['email'];
+    if (empty($emri) || empty($username) || empty($email) || empty($tempPass)) {
+        die("Please fill in all fields.");
+    }
 
-		$tempPass = $_POST['password'];
-		$password = password_hash($tempPass, PASSWORD_DEFAULT);
+    // Check if username or email already exists
+    $checkSql = "SELECT id FROM users
+                 WHERE username = :username OR email = :email";
 
+    $check = $conn->prepare($checkSql);
 
-		if(empty($emri) || empty($username) || empty($email) || empty($password))
-		{
-			echo "You have not filled in all the fields.";
-		}
-		else
-		{
+    $check->execute([
+        ':username' => $username,
+        ':email' => $email
+    ]);
 
-			$sql = "INSERT INTO users(emri,username,email,password) VALUES (:emri, :username, :email, :password)";
+    if ($check->fetch()) {
+        die("This user is already registered. Please log in.");
+    }
 
-			$insertSql = $conn->prepare($sql);
-			
+    // Hash password
+    $password = password_hash($tempPass, PASSWORD_DEFAULT);
 
-			$insertSql->bindParam(':emri', $emri);
-			$insertSql->bindParam(':username', $username);
-			$insertSql->bindParam(':email', $email);
-			$insertSql->bindParam(':password', $password);
+    // Insert new user
+    $sql = "INSERT INTO users (emri, username, email, password)
+            VALUES (:emri, :username, :email, :password)";
 
-			$insertSql->execute();
+    $stmt = $conn->prepare($sql);
 
-			header("Location: dashboard.php");
+    $stmt->execute([
+        ':emri' => $emri,
+        ':username' => $username,
+        ':email' => $email,
+        ':password' => $password
+    ]);
 
-
-		}
-
-
-
-	}
-
-
+    header("Location: login.php");
+    exit();
+}
 ?>

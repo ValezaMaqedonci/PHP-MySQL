@@ -59,7 +59,7 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
-           <?php if ($_SESSION['is_admin'] == 'true') { ?>
+           <?php if (($_SESSION['is_admin'] ?? 0) == true) { ?>
             <li class="nav-item">
               <a class="nav-link" href="home.php">
                 <span data-feather="file"></span>
@@ -112,7 +112,7 @@
         
       </div>
 
-    <?php if ($_SESSION['is_admin'] == 'true') { ?>
+    <?php if ($_SESSION['is_admin'] ?? 0) { ?>
 
       <h2>Users</h2>
       <div class="table-responsive">
@@ -147,9 +147,21 @@
           </tbody>
         </table>
       </div>
-     <?php  } else {
-      
-    } ?>
+     <?php } else { ?>
+
+    <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+
+    <p>Welcome to your Movies Management System.</p>
+
+    <a href="home.php" class="btn btn-primary">
+        Browse Movies
+    </a>
+
+    <a href="bookings.php" class="btn btn-secondary">
+        My Bookings
+    </a>
+
+<?php } ?>
     </main>
   </div>
 </div>

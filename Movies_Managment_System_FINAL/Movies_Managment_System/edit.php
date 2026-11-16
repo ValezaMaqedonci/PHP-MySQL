@@ -16,7 +16,9 @@
 
    $user_data = $selectUser->fetch();
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['id']) || !isset($_SESSION['is_admin']) || $_SESSION['is_admin'] != 1) {
     die("You are not authorized to edit!");
