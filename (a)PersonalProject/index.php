@@ -1,6 +1,10 @@
 
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $pageTitle = 'Home | Hotel Bellavista Spain';
 
 require_once __DIR__ . '/includes/header.php';
@@ -11,7 +15,7 @@ $stmt = $pdo->query("
     FROM rooms
     INNER JOIN room_types
     ON rooms.room_type_id = room_types.id
-    ORDER BY rooms.price_per_night ASC
+    ORDER BY rooms.price ASC
     LIMIT 3
 ");
 
@@ -213,7 +217,7 @@ $services = $serviceStmt->fetchAll();
 
                         <div class="room-price">
                             <strong>
-                                €<?= number_format($room['price_per_night'], 2) ?>
+                                €<?= number_format($room['price'], 2) ?>
                             </strong>
                             <span>/ night</span>
                         </div>
