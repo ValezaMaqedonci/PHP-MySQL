@@ -1,9 +1,10 @@
 
 <?php
-// require_once __DIR__ . '/../config.php';
-// require_once __DIR__ . '/../includes/functions.php';
-?>
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../includes/functions.php';
 
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
 
     <title><?= isset($pageTitle) ? e($pageTitle) : 'Hotel Bellavista | Spain' ?></title>
 
-    <meta name="description" content="Discover Hotel Bellavista in Spain. Enjoy luxury accommodation, beautiful rooms and unforgettable experiences.">
+    <meta name="description" content="Discover Hotel Bellavista in Spain.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
-
 </head>
 <body>
 
@@ -32,12 +32,17 @@
     </a>
 
     <nav class="main-nav">
-        <a href="<?= BASE_URL ?>index.php">Home</a>
-        <a href="<?= BASE_URL ?>rooms/index.php">Rooms</a>
-        <a href="<?= BASE_URL ?>about.php">About</a>
-        <a href="<?= BASE_URL ?>services.php">Services</a>
-        <a href="<?= BASE_URL ?>gallery.php">Gallery</a>
-        <a href="<?= BASE_URL ?>contact.php">Contact</a>
+        <a href="<?= BASE_URL ?>about.php"
+           class="<?= $currentPage === 'about.php' ? 'active' : '' ?>">About</a>
+
+        <a href="<?= BASE_URL ?>services.php"
+           class="<?= $currentPage === 'services.php' ? 'active' : '' ?>">Services</a>
+
+        <a href="<?= BASE_URL ?>gallery.php"
+           class="<?= $currentPage === 'gallery.php' ? 'active' : '' ?>">Gallery</a>
+
+        <a href="<?= BASE_URL ?>contact.php"
+           class="<?= $currentPage === 'contact.php' ? 'active' : '' ?>">Contact</a>
     </nav>
 
     <div class="header-actions">
@@ -73,3 +78,5 @@
     </div>
 
 </header>
+</body>
+</html>

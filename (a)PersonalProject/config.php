@@ -2,7 +2,7 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'hotel_bellavista-db';
+$dbname = 'hotel_bellavista_new';
 $username = 'root';
 $password = '';
 
@@ -29,7 +29,6 @@ try {
         false
     );
 
-    echo "Connected to the database successfully.";
 
 } catch (PDOException $e) {
 

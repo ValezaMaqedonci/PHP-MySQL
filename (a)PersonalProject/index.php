@@ -163,6 +163,7 @@ $services = $serviceStmt->fetchAll();
 </section>
 
 
+
 <!-- ROOMS SECTION -->
 
 <section class="rooms-section">
@@ -181,27 +182,23 @@ $services = $serviceStmt->fetchAll();
 
     <div class="rooms-grid">
 
-        <?php foreach ($rooms as $room): ?>
+<?php
+$roomImages = [
+    'room1.PNG',
+    'room2.PNG',
+    'room3.PNG'
+];
+?>
 
-            <article class="room-card">
+<?php foreach ($rooms as $index => $room): ?>
 
-                <div class="room-image">
+    <article class="room-card">
 
-                    <?php if (!empty($room['image'])): ?>
-
-                        <img
-                            src="<?= BASE_URL . 'assets/images/' . e($room['image']) ?>"
-                            alt="<?= e($room['name']) ?>">
-
-                    <?php else: ?>
-
-                        <img
-                            src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"
-                            alt="Hotel room">
-
-                    <?php endif; ?>
-
-                </div>
+        <div class="room-image">
+            <img
+                src="img/<?= $roomImages[$index % 3] ?>"
+                alt="<?= e($room['name']) ?>">
+        </div>
 
                 <div class="room-details">
 
