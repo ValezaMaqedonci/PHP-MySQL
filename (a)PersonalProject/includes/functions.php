@@ -1,7 +1,7 @@
 
 <?php
 
-require_once __DIR__ . '/../config/app.php';
+require_once __DIR__ . '/../app.php';
 
 function e($value) {
     return htmlspecialchars(

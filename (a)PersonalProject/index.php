@@ -1,6 +1,10 @@
 
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $pageTitle = 'Home | Hotel Bellavista Spain';
 
 require_once __DIR__ . '/includes/header.php';
@@ -11,7 +15,7 @@ $stmt = $pdo->query("
     FROM rooms
     INNER JOIN room_types
     ON rooms.room_type_id = room_types.id
-    ORDER BY rooms.price_per_night ASC
+    ORDER BY rooms.price ASC
     LIMIT 3
 ");
 
@@ -159,6 +163,7 @@ $services = $serviceStmt->fetchAll();
 </section>
 
 
+
 <!-- ROOMS SECTION -->
 
 <section class="rooms-section">
@@ -177,27 +182,23 @@ $services = $serviceStmt->fetchAll();
 
     <div class="rooms-grid">
 
-        <?php foreach ($rooms as $room): ?>
+<?php
+$roomImages = [
+    'room1.PNG',
+    'room2.PNG',
+    'room3.PNG'
+];
+?>
 
-            <article class="room-card">
+<?php foreach ($rooms as $index => $room): ?>
 
-                <div class="room-image">
+    <article class="room-card">
 
-                    <?php if (!empty($room['image'])): ?>
-
-                        <img
-                            src="<?= BASE_URL . 'assets/images/' . e($room['image']) ?>"
-                            alt="<?= e($room['name']) ?>">
-
-                    <?php else: ?>
-
-                        <img
-                            src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800"
-                            alt="Hotel room">
-
-                    <?php endif; ?>
-
-                </div>
+        <div class="room-image">
+            <img
+                src="img/<?= $roomImages[$index % 3] ?>"
+                alt="<?= e($room['name']) ?>">
+        </div>
 
                 <div class="room-details">
 
@@ -213,7 +214,7 @@ $services = $serviceStmt->fetchAll();
 
                         <div class="room-price">
                             <strong>
-                                €<?= number_format($room['price_per_night'], 2) ?>
+                                €<?= number_format($room['price'], 2) ?>
                             </strong>
                             <span>/ night</span>
                         </div>

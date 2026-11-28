@@ -2,7 +2,7 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'hotel_bellavista';
+$dbname = 'hotel_bellavista_new';
 $username = 'root';
 $password = '';
 
@@ -28,6 +28,7 @@ try {
         PDO::ATTR_EMULATE_PREPARES,
         false
     );
+
 
 } catch (PDOException $e) {
 
